@@ -17,5 +17,3 @@ function start(route, handle) {
 }
 
 exports.start = start;
-
-Excerpt From: Manuel Kiessling. “The Node Beginner Book.” iBooks. 
