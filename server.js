@@ -43,7 +43,7 @@ function route(handle, pathname, response, request) {
 exports.route = route;
 
 function routePost(handle, pathname, response, postData) {
-    console.log("About to route a request for " + pathname);
+    console.log("About to post route a request for " + pathname + " with postData of " + postData);
     if (typeof handle[pathname] === 'function') {
         handle[pathname](response, postData);
     } else {
