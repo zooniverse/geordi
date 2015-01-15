@@ -63,6 +63,7 @@ function list(response, request) {
             console.log(log._id.toString());
             console.log(log.time.toString());
             console.log(log.text.toString());
+            response.write('<tr><td>1</td><td>2</td><td>3</td></tr>\n');
             response.write("<tr><td>"+log._id.toString()+"</td>");
             response.write("<td>"+log.time.toString()+"</td>");
             response.write("<td>"+log.text.toString()+"</td></tr>\n");
