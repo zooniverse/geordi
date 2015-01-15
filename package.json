@@ -4,7 +4,8 @@
   "description": "A simple Zooniverse user event logger",
   "main": "index.js",
   "dependencies": {
-    "fortune": "^0.2.4"
+    "fortune": "^0.2.4",
+    "i": "^0.3.2"
   },
   "devDependencies": {},
   "scripts": {
@@ -20,8 +21,7 @@
     "API",
     "analytics",
     "user",
-    "user",
-    "events"
+    "event"
   ],
   "author": "Alex Bowyer",
   "license": "Apache",
