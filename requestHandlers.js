@@ -44,7 +44,25 @@ function what(response, request) {
 function log(response, postData) {
     console.log("Request handler 'log' was called.");
     response.writeHead(200, {"Content-Type": "text/plain"});
-    response.write("You've sent: " + querystring.parse(postData).text);
+    var logText = querystring.parse(postData).text;
+    response.write("Logged: "+logText);
+    var logEntry = { time: Date.now(),text:logText };
+    db.insert(logEntry, function (err,newDoc) {
+        console.log('error ('+err+'}, failed to log doc with ID '+newDoc._id+' and text '+newDoc.text);
+    });
+    response.end();
+}
+
+function list(response, request) {
+    console.log("Request handler 'list' was called.");
+    response.writeHead(200, {"Content-Type": "text/plain"});
+    response.write("<table><th><td>ID</td><td>Time</td><td>Text</td></th>\n");
+    db.find({}, function (err, docs) {
+        for (var doc in docs) {
+            response.write("<tr><td>"+doc._id+"</td><td>"+doc.time+"</td><td>"+doc.text+"</td></tr>\n");
+        }
+    });
+    response.write("</table>\n");
     response.end();
 }
 
@@ -82,3 +100,4 @@ exports.upload = upload;
 exports.show = show;
 exports.what = what;
 exports.log = log;
+exports.list = list;
