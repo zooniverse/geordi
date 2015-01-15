@@ -7,7 +7,7 @@ function start(route, handle) {
         var pathname = url.parse(request.url).pathname;
         console.log("Request for " + pathname + " received.");
 
-        if (pathname == 'log') {
+        if (pathname == '/log') {
             request.setEncoding("utf8");
             request.addListener("data", function (postDataChunk) {
                 postData += postDataChunk;
