@@ -72,7 +72,8 @@ TaskRepository.prototype.remove = function (id) {
 var express = require('express');
 var app = express();
 var taskRepository = new TaskRepository();
-app.use(express.bodyParser());
+var bodyParser = require('body-parser');
+app.use(bodyParser);
 
 /**
  * HTTP GET /tasks
