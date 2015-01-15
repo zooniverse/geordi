@@ -21,5 +21,9 @@
     "url": "git@github.com:zooniverse/user-analytics.git"
   },
   "main": "index",
-  "licence": "Apache"
+  "licence": "Apache",
+  "dependencies": {
+    "formidable": "^1.0.16",
+    "nedb": "^1.1.1"
+  }
 }
