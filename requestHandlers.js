@@ -1,6 +1,6 @@
-var querystring = require("querystring"), fs = require("fs"),
-    formidable = require("formidable");
+var querystring = require("querystring"), fs = require("fs"), formidable = require("formidable");
 var Datastore = require("nedb"), db = new Datastore({ filename: './db/logdb', autoload: true });
+var dateFormat = require('dateformat');
 
 function start(response) {
     console.log("Request handler 'start' was called.");
@@ -62,7 +62,7 @@ function list(response, request) {
         for (var doc in docs) {
             var log = docs[doc];
             response.write("<tr><td>"+log._id+"</td>");
-            response.write("<td>"+log.time.toString()+"</td>");
+            response.write("<td>"+dateFormat(log.time)+"</td>");
             response.write("<td>"+log.text+"</td></tr>\n");
         }
         response.write("</tbody></table>\n");
