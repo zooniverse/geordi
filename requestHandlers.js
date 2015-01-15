@@ -39,10 +39,10 @@ function what(response, request) {
     response.end();
 }
 
-function log(response, request) {
+function log(response, postData) {
     console.log("Request handler 'log' was called.");
     response.writeHead(200, {"Content-Type": "text/plain"});
-    response.write("You've sent: " + request);
+    response.write("You've sent: " + querystring.parse(postData).text);
     response.end();
 }
 
