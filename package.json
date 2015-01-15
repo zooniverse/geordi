@@ -1,31 +1,28 @@
 {
-  "name": "mico-user-analytics",
-  "version": "0.0.1",
-  "author": {
-    "name": "Alex Bowyer",
-    "email": "alex.bowyer@zooniverse.org"
+  "name": "user-analytics",
+  "version": "1.0.0",
+  "description": "Testing Express & REST code",
+  "main": "rest_api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "contributors": [
-    "Alex Bowyer"
-  ],
-  "description": "Simple logger with node.js and nedb",
-  "keywords": [
-    "node",
-    "nedb",
-    "logging",
-    "lightweight"
-  ],
-  "homepage": "https://github.com/zooniverse/user-analytics",
   "repository": {
     "type": "git",
-    "url": "git@github.com:zooniverse/user-analytics.git"
+    "url": "https://github.com/zooniverse/user-analytics"
   },
-  "main": "index",
-  "licence": "Apache",
+  "keywords": [
+    "rest",
+    "express",
+    "node.js",
+    "API"
+  ],
+  "author": "Alex Bowyer",
+  "license": "Apache",
+  "bugs": {
+    "url": "https://github.com/zooniverse/user-analytics/issues"
+  },
+  "homepage": "https://github.com/zooniverse/user-analytics",
   "dependencies": {
-    "dateformat": "^1.0.11",
-    "express": "^4.11.0",
-    "formidable": "^1.0.16",
-    "nedb": "^1.1.1"
+    "express": "^4.11.0"
   }
 }
