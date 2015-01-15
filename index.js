@@ -1,6 +1,6 @@
 var fortune = require('fortune')
   , app = fortune({
-    db: 'uxlog'
+    db: 'user-event-log'
   })
   .resource('user', {
     zooniverse_id: String, // user ID as used in Ouroboros/Panoptes
