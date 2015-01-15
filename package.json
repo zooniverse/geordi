@@ -1,8 +1,8 @@
 {
-  "name": "user-analytics",
+  "name": "user-analytics-restify-test",
   "version": "1.0.0",
-  "description": "Testing Express & REST code",
-  "main": "rest_api.js",
+  "description": "Just testing restify",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,9 +12,8 @@
   },
   "keywords": [
     "rest",
-    "express",
-    "node.js",
-    "API"
+    "api",
+    "node.js"
   ],
   "author": "Alex Bowyer",
   "license": "Apache",
@@ -23,7 +22,6 @@
   },
   "homepage": "https://github.com/zooniverse/user-analytics",
   "dependencies": {
-    "body-parser": "^1.10.1",
-    "express": "^4.11.0"
+    "restify": "^2.8.4"
   }
 }
