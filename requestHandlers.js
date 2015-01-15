@@ -55,7 +55,7 @@ function log(response, postData) {
 
 function list(response, request) {
     console.log("Request handler 'list' was called.");
-    response.writeHead(200, {"Content-Type": "text/plain"});
+    response.writeHead(200, {"Content-Type": "text/html"});
     response.write("<table><th><td>ID</td><td>Time</td><td>Text</td></th>\n");
     db.find({}, function (err, docs) {
         for (var doc in docs) {
