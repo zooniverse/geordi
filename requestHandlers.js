@@ -42,7 +42,7 @@ function what(response, request) {
 function log(response, request) {
     console.log("Request handler 'log' was called.");
     response.writeHead(200, {"Content-Type": "text/plain"});
-    response.write("You've sent: " + postData);
+    response.write("You've sent: " + request);
     response.end();
 }
 
