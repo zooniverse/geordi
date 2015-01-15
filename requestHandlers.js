@@ -18,6 +18,34 @@ function start(response) {
     response.end();
 }
 
+function what(response, request) {
+    console.log("Request handler 'what' was called.");
+
+    var body = '<html>' +
+        '<head>' +
+        '<meta http-equiv="Content-Type" content="text/html; ' +
+        'charset=UTF-8" />' +
+        '</head>' +
+        '<body>' +
+        '<form action="/log" method="post">' +
+        '<textarea name="text" rows="20" cols="60"></textarea>' +
+        '<input type="submit" value="Log this" />' +
+        '</form>' +
+        '</body>' +
+        '</html>';
+
+    response.writeHead(200, {"Content-Type": "text/html"});
+    response.write(body);
+    response.end();
+}
+
+function log(response, request) {
+    console.log("Request handler 'log' was called.");
+    response.writeHead(200, {"Content-Type": "text/plain"});
+    response.write("You've sent: " + postData);
+    response.end();
+}
+
 function upload(response, request) {
     console.log("Request handler 'upload' was called.");
 
