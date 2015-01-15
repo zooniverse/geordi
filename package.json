@@ -23,6 +23,7 @@
   "main": "index",
   "licence": "Apache",
   "dependencies": {
+    "dateformat": "^1.0.11",
     "formidable": "^1.0.16",
     "nedb": "^1.1.1"
   }

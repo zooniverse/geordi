@@ -55,19 +55,19 @@ function log(response, postData) {
 
 function list(response, request) {
     console.log("Request handler 'list' was called.");
-    response.writeHead(200, {"Content-Type": "text/html"});
-    response.write("<table border='1' cellpadding='5' cellspacing='5'><th><td>ID</td><td>Time</td><td>Text</td></th>\n");
-    var responseWriter = function(text) { console.log('trying to write '+text); response.write(text);}.bind({response:response});
     db.find({}, function (err, docs) {
+        response.writeHead(200, {"Content-Type": "text/html"});
+        response.write("<table border='1' cellpadding='5' cellspacing='5'><thead><th>ID</th><th>Time</th><th>Text</th></thead>\n");
+        response.write("<tbody>\n");
         for (var doc in docs) {
             var log = docs[doc];
-            responseWriter("<tr><td>"+log._id+"</td>");
-            responseWriter("<td>"+log.time.toString()+"</td>");
-            responseWriter("<td>"+log.text+"</td></tr>\n");
+            response.write("<tr><td>"+log._id+"</td>");
+            response.write("<td>"+log.time.toString()+"</td>");
+            response.write("<td>"+log.text+"</td></tr>\n");
         }
-    }.bind({responseWriter:responseWriter}));
-    response.write("</table>\n");
-    response.end();
+        response.write("</tbody></table>\n");
+        response.end();
+    });
 }
 
 function upload(response, request) {
