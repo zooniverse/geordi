@@ -58,15 +58,16 @@ function list(response, request) {
     response.writeHead(200, {"Content-Type": "text/html"});
     response.write("<table border='1' cellpadding='5' cellspacing='5'><th><td>ID</td><td>Time</td><td>Text</td></th>\n");
     var a = 1;
+    var b = response.write;
     db.find({}, function (err, docs) {
         for (var doc in docs) {
             var log = docs[doc];
             a++;
-            response.write("<tr><td>"+log._id+"</td>");
-            response.write("<td>"+log.time.toString()+"</td>");
-            response.write("<td>"+log.text+"</td></tr>\n");
+            b("<tr><td>"+log._id+"</td>");
+            b("<td>"+log.time.toString()+"</td>");
+            b("<td>"+log.text+"</td></tr>\n");
         }
-    }.bind({a:a}));
+    }.bind({a:a,b:b}));
     response.write('a is '+a);
     response.write("</table>\n");
     response.end();
