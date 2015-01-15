@@ -58,13 +58,9 @@ function list(response, request) {
     response.writeHead(200, {"Content-Type": "text/html"});
     response.write("<table border='1' cellpadding='5' cellspacing='5'><th><td>ID</td><td>Time</td><td>Text</td></th>\n");
     db.find({}, function (err, docs) {
-        console.log('in callback');
-        console.log(docs);
-        console.log(docs.length);
-
         for (var doc in docs) {
-            console.log(docs[doc]);
-            response.write("<tr><td>"+doc._id+"</td><td>"+doc.time+"</td><td>"+doc.text+"</td></tr>\n");
+            var log = docs[doc];
+            response.write("<tr><td>"+log._id+"</td><td>"+log.time+"</td><td>"+log.text+"</td></tr>\n");
         }
     });
     response.write("</table>\n");
