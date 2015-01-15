@@ -1,7 +1,8 @@
 var restify = require('restify');
 
 function respond(req, res, next) {
-  res.send('hello ' + req.params.name);
+  var doc = {name:req.params.name,data:12};
+  res.send(doc);
   next();
 }
 
