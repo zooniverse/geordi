@@ -57,18 +57,15 @@ function list(response, request) {
     console.log("Request handler 'list' was called.");
     response.writeHead(200, {"Content-Type": "text/html"});
     response.write("<table border='1' cellpadding='5' cellspacing='5'><th><td>ID</td><td>Time</td><td>Text</td></th>\n");
-    var a = 1;
-    var b = response.write;
+    var responseWriter = function(text) { console.log('trying to write '+text); response.write(text); };
     db.find({}, function (err, docs) {
         for (var doc in docs) {
             var log = docs[doc];
-            a++;
-            b("<tr><td>"+log._id+"</td>");
-            b("<td>"+log.time.toString()+"</td>");
-            b("<td>"+log.text+"</td></tr>\n");
+            responseWriter("<tr><td>"+log._id+"</td>");
+            responseWriter("<td>"+log.time.toString()+"</td>");
+            responseWriter("<td>"+log.text+"</td></tr>\n");
         }
-    }.bind({a:a,b:b}));
-    response.write('a is '+a);
+    }.bind({responseWriter:responseWriter}));
     response.write("</table>\n");
     response.end();
 }
