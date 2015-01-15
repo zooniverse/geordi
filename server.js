@@ -14,7 +14,7 @@ function start(route, handle) {
                 console.log("Received POST data chunk '" + postDataChunk + "'.");
             });
             request.addListener("end", function () {
-                route(handle, pathname, response, postData);
+                routePost(handle, pathname, response, postData);
             });
         }
         else
@@ -39,4 +39,19 @@ function route(handle, pathname, response, request) {
         response.end();
     }
 }
+
 exports.route = route;
+
+function routePost(handle, pathname, response, postData) {
+    console.log("About to route a request for " + pathname);
+    if (typeof handle[pathname] === 'function') {
+        handle[pathname](response, postData);
+    } else {
+        console.log("No request handler found for " + pathname);
+        response.writeHead(404, {"Content-Type": "text/html"});
+        response.write("404 Not found");
+        response.end();
+    }
+}
+
+exports.routePost = routePost;
