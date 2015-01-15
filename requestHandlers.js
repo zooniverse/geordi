@@ -58,6 +58,7 @@ function list(response, request) {
     response.writeHead(200, {"Content-Type": "text/html"});
     response.write("<table border='1' cellpadding='5' cellspacing='5'><th><td>ID</td><td>Time</td><td>Text</td></th>\n");
     db.find({}, function (err, docs) {
+        response.write('<p>Found '+docs.length+' docs.</p>');
         for (var doc in docs) {
             response.write("<tr><td>"+doc._id+"</td><td>"+doc.time+"</td><td>"+doc.text+"</td></tr>\n");
         }
