@@ -27,6 +27,6 @@ var fortune = require('fortune')
     subject: { ref: 'subject', inverse: 'zooniverse_id' }, // the subject this corresponds to (for 'login', 'idle', 'logout' this will be null)
     owner: 'user', // the user that performed this event
     type: String, // one of: 'login','favourite','collect','share','meme','tweet','pin','classify','post','comment','idle','logout'
-    related_id: String, // in the case of 'collect', 'meme', 'classify', 'post', 'comment' this is the ID of the collection, meme, classification, post, or comment
+    related_id: String // in the case of 'collect', 'meme', 'classify', 'post', 'comment' this is the ID of the collection, meme, classification, post, or comment
   })
   .listen(8090);
