@@ -64,7 +64,7 @@ function list(response, request) {
             response.write("<td>"+log.time.toString()+"</td>");
             response.write("<td>"+log.text+"</td></tr>\n");
         }
-    }.bind({response:response, doi:function(a){console.log(a); }}));
+    });
     response.write("</table>\n");
     response.end();
 }
