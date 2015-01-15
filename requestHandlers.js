@@ -1,6 +1,6 @@
 var querystring = require("querystring"), fs = require("fs"),
     formidable = require("formidable");
-var nedb = require("nedb"), db = new Datastore({ filename: './db/logdb' });
+var Datastore = require("nedb"), db = new Datastore({ filename: './db/logdb' });
 db.loadDatabase(function (err) { console.log('database error:' + err); });
 
 function start(response) {
