@@ -1,5 +1,7 @@
 var http = require("http");
 var url = require("url");
+var querystring = require("querystring");
+
 function start(route, handle) {
     function onRequest(request, response) {
 
@@ -43,7 +45,7 @@ function route(handle, pathname, response, request) {
 exports.route = route;
 
 function routePost(handle, pathname, response, postData) {
-    console.log("About to post route a request for " + pathname + " with postData of " + postData.text);
+    console.log("About to route a request for " + pathname);
     if (typeof handle[pathname] === 'function') {
         handle[pathname](response, postData);
     } else {
