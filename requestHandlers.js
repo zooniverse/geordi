@@ -60,7 +60,9 @@ function list(response, request) {
     db.find({}, function (err, docs) {
         for (var doc in docs) {
             var log = docs[doc];
-            response.write("<tr><td>"+log._id+"</td><td>"+log.time.toString()+"</td><td>"+log.text+"</td></tr>\n");
+            response.write("<tr><td>"+log._id+"</td>");
+            response.write("<td>"+log.time.toString()+"</td>");
+            response.write("<td>"+log.text+"</td></tr>\n");
         }
     });
     response.write("</table>\n");
