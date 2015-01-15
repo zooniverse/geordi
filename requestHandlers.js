@@ -63,6 +63,7 @@ function list(response, request) {
             response.write("<tr><td>"+doc._id+"</td><td>"+doc.time+"</td><td>"+doc.text+"</td></tr>\n");
         }
     });
+    response.write('<p>Found '+docs.length+' docs.</p>');
     response.write("</table>\n");
     response.end();
 }
