@@ -1,7 +1,7 @@
 {
-  "name": "user-analytics-restify-test",
+  "name": "user-analytics-test-fortune",
   "version": "1.0.0",
-  "description": "Just testing restify",
+  "description": "Testing out Fortune",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,9 +11,10 @@
     "url": "https://github.com/zooniverse/user-analytics"
   },
   "keywords": [
-    "rest",
-    "api",
-    "node.js"
+    "test",
+    "fortune",
+    "REST",
+    "API"
   ],
   "author": "Alex Bowyer",
   "license": "Apache",
@@ -22,6 +23,6 @@
   },
   "homepage": "https://github.com/zooniverse/user-analytics",
   "dependencies": {
-    "restify": "^2.8.4"
+    "fortune": "^0.2.4"
   }
 }
