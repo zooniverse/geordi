@@ -12,4 +12,8 @@ var fortune = require('fortune')
     age: Number,
     owner: 'person' // "belongs to" relationship to a person
   })
+  .resource('shape', {
+    colour: String,
+    type: Number
+  })
   .listen(1337);
