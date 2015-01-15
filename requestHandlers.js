@@ -1,7 +1,6 @@
 var querystring = require("querystring"), fs = require("fs"),
     formidable = require("formidable");
 var Datastore = require("nedb"), db = new Datastore({ filename: './db/logdb', autoload: true });
-db.loadDatabase(function (err) { console.log('database error:' + err); });
 
 function start(response) {
     console.log("Request handler 'start' was called.");
