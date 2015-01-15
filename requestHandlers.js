@@ -60,6 +60,9 @@ function list(response, request) {
     db.find({}, function (err, docs) {
         for (var doc in docs) {
             var log = docs[doc];
+            console.log(log._id.toString());
+            console.log(log.time.toString());
+            console.log(log.text.toString());
             response.write("<tr><td>"+log._id.toString()+"</td>");
             response.write("<td>"+log.time.toString()+"</td>");
             response.write("<td>"+log.text.toString()+"</td></tr>\n");
