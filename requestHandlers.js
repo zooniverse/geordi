@@ -60,9 +60,12 @@ function list(response, request) {
     db.find({}, function (err, docs) {
         console.log('in callback');
         console.log(docs);
+        console.log(docs.length);
 
         for (var doc in docs) {
             console.log(doc);
+            console.log(doc._id);
+            console.log(doc['_id']);
             response.write("<tr><td>"+doc._id+"</td><td>"+doc.time+"</td><td>"+doc.text+"</td></tr>\n");
         }
     });
