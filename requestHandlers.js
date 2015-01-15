@@ -62,6 +62,7 @@ function list(response, request) {
         console.log(docs);
 
         for (var doc in docs) {
+            console.log(doc);
             response.write("<tr><td>"+doc._id+"</td><td>"+doc.time+"</td><td>"+doc.text+"</td></tr>\n");
         }
     });
