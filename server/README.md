@@ -1,2 +1,2 @@
 # user-analytics
-Created for the MICO project (WP7), this simple JSON API server (using fortune, nedb and node.js) can capture and return simple user interaction event history
+Created for the MICO project (WP7), this service offers simple JavaScript function calls to store and retrieve user events from the JSON API server

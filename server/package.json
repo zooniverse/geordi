@@ -1,13 +1,8 @@
 {
-  "name": "user-analytics",
+  "name": "user-analytics-server",
   "version": "0.5.0",
-  "description": "A simple Zooniverse user event logger",
+  "description": "Client for simpler access to storage API",
   "main": "index.js",
-  "dependencies": {
-    "fortune": "^0.2.4",
-    "i": "^0.3.2"
-  },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,17 +11,19 @@
     "url": "https://github.com/zooniverse/user-analytics"
   },
   "keywords": [
-    "Zooniverse",
-    "REST",
-    "API",
-    "analytics",
-    "user",
-    "event"
+    "server",
+    "javascript",
+    "node",
+    "fortune",
+    "zooniverse"
   ],
   "author": "Alex Bowyer",
   "license": "Apache",
   "bugs": {
     "url": "https://github.com/zooniverse/user-analytics/issues"
   },
-  "homepage": "https://github.com/zooniverse/user-analytics"
+  "homepage": "https://github.com/zooniverse/user-analytics",
+  "devDependencies": {
+    "nodeunit": "^0.9.0"
+  }
 }
