@@ -1,5 +1,5 @@
 var API = require('fortune')
-  , app = fortune({
+  , app = API({
     db: 'user-event-log'
   })
   .resource('user', {
