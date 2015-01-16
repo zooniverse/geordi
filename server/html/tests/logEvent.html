@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="jquery.serializeJSON.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#log").click(function(e)
+    {
+        var eventForm = $("#eventform").serializeJSON();
+        console.log(eventForm);
+        $.ajax(
+        {
+            url : "/logEvent",
+            type: "POST",
+            data : eventForm,
+            success:function(maindta)
+            {
+               $('#message').html("<strong>Logged Event</strong>");
+            },
+            error: function(jqXHR, textStatus, errorThrown)
+            {
+                $('#message').html("<strong>Failed to Log Event: </strong>"+errorThrown);
+            }
+        });
+        e.preventDefault();
+    });
+});
+</script>
+</body>
+<div id="message"> </div>
+<form name="eventform" id="eventform" method="POST">
+<label for="user_id">Zooniverse User ID: </label><input type="text" name="user_id">
+<label for="subject_id">Zooniverse Subject ID: </label><input type="text" name="subject_id">
+<label for="related_id">Zooniverse Related ID (e.g. collection, classification, post, meme or comment): </label><input type="text" name="related_id">
+<label for="type">Type of User Event: </label><select name="type">
+    <option value="login">Login</option>
+    <option value="logout">Logout</option>
+    <option value="idle">Become Idle</option>
+    <option value="favourite">Favourite</option>
+    <option value="collect">Collect</option>
+    <option value="tweet">Tweet</option>
+    <option value="pin">Pin</option>
+    <option value="share">Share</option>
+    <option value="meme">Meme</option>
+    <option value="post">Post</option>
+    <option value="comment">Comment</option>
+    <option value="classify">Classify</option>
+</select>
+<input type="button" class="btn btn-info" id="log" value="Log Event"></form>
+</html>

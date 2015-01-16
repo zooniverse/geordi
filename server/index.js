@@ -1,9 +1,9 @@
-var server = require("./API");
+var server = require("./server");
 var router = require("./router");
 var requestHandlers = require("./requestHandlers");
 
 var handle = {};
-handle["/"] = requestHandlers.start;
+handle["/test/logEvent"] = requestHandlers.testLogEvent;
 handle["/logEvent"] = requestHandlers.logEvent;
 
 server.start(router.route, handle);
