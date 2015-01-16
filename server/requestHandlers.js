@@ -1,5 +1,3 @@
-//var querystring = require("querystring");
-//var dateFormat = require('dateformat');
 var utils = require('utils');
 var api = require('api_client');
 

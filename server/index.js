@@ -6,5 +6,4 @@ var handle = {};
 handle["/"] = requestHandlers.start;
 handle["/logEvent"] = requestHandlers.logEvent;
 
-
 server.start(router.route, handle);
