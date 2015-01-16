@@ -15,3 +15,5 @@ function getEventDataFromPost(postData) {
         related_id:related_id
     }
 }
+
+exports.getEventDataFromPost = getEventDataFromPost;
