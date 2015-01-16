@@ -1,4 +1,4 @@
-var fortune = require('fortune')
+var API = require('fortune')
   , app = fortune({
     db: 'user-event-log'
   })
@@ -30,3 +30,5 @@ var fortune = require('fortune')
     related_id: String // in the case of 'collect', 'meme', 'classify', 'post', 'comment' this is the ID of the collection, meme, classification, post, or comment
   })
   .listen(8090);
+
+exports.API = API;

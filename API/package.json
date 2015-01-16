@@ -2,7 +2,7 @@
   "name": "user-analytics-API",
   "version": "0.5.0",
   "description": "A simple Zooniverse user event logger, conforming to JSON API",
-  "main": "index.js",
+  "main": "API.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

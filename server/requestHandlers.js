@@ -1,15 +1,22 @@
 //var querystring = require("querystring");
 //var dateFormat = require('dateformat');
 var utils = require('utils');
+var api = require('api_client');
 
 function logEvent(response, postData) {
-    console.log("Request handler 'log' was called.");
-    response.writeHead(200, {"Content-Type": "text/plain"});
-    var logText = querystring.parse(postData).text;
-    response.write("Logged: "+logText);
-    var logEntry = { time: Date.now(),text:logText };
-    db.insert(logEntry, function (err,newDoc) {
-        console.log('error ('+err+'}, failed to log doc with ID '+newDoc._id+' and text '+newDoc.text);
-    });
-    response.end();
+    console.log("Request handler 'logEvent' was called.");
+    var eventData = utils.getEventDataFromPost(postData);
+    var success = api.addEvent(eventData);
+    if (success)
+    {
+        response.writeHead(201, {"Content-Type": "application/json"});
+        response.end();
+    }
+    else
+    {
+        response.writeHead(500, {"Content-Type": "application/json"});
+        response.end();
+    }
 }
+
+exports.logEvent = logEvent;
