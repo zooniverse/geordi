@@ -18,6 +18,7 @@ exports.testLogEvent = testLogEvent;
 
 function logEvent(response, postData) {
     console.log("Request handler 'logEvent' was called.");
+    console.log(postData);
     var eventData = utils.getEventDataFromPost(postData);
     var success = api.addEvent(eventData);
     if (success)

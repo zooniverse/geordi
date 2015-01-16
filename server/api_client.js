@@ -5,9 +5,11 @@ function addEvent(eventData)
     var dataString = JSON.stringify(eventData);
 
     var headers = {
-        'Content-Type': 'application/json',
-        'Content-Length': dataString.length
+        'Content-Type': 'application/json; charset=utf-8',
+        'Content-Length': dataString.length + '{"events":['.length + ']}'.length
     };
+
+    console.log('headers set length to '+dataString.length);
 
     var options = {
         host: 'localhost',  // TODO: move to settings file
@@ -32,7 +34,8 @@ function addEvent(eventData)
       console.log(e);
       return false;
     });
-    req.write(dataString);
+    console.log('{"events":['+dataString+']}');
+    req.write('{"events":['+dataString+']}');
     req.end();
 };
 

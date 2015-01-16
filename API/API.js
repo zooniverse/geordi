@@ -22,10 +22,9 @@ var API = require('fortune')
     wordUsages: ['wordUsage'] // wordUsages for this subject
   })
   .resource('event', {
-    event_id: String, // unique ID for the event
     time: Date, // full date/timestamp of event in UTC, server time.
-    subject: { ref: 'subject', inverse: 'zooniverse_id' }, // the subject this corresponds to (for 'login', 'idle', 'logout' this will be null)
-    owner: 'user', // the user that performed this event
+    subject_id:String,
+    user_id:String,
     type: String, // one of: 'login','favourite','collect','share','meme','tweet','pin','classify','post','comment','idle','logout'
     related_id: String // in the case of 'collect', 'meme', 'classify', 'post', 'comment' this is the ID of the collection, meme, classification, post, or comment
   })

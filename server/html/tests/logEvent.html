@@ -8,7 +8,6 @@ $(document).ready(function(){
     $("#log").click(function(e)
     {
         var eventForm = $("#eventform").serializeJSON();
-        console.log(eventForm);
         $.ajax(
         {
             url : "/logEvent",
@@ -20,14 +19,14 @@ $(document).ready(function(){
             },
             error: function(jqXHR, textStatus, errorThrown)
             {
-                $('#message').html("<strong>Failed to Log Event: </strong>"+errorThrown);
+                $('#message').html("<strong>Failed to Log Event: </strong>"+errorThrown+textStatus);
             }
         });
         e.preventDefault();
     });
 });
 </script>
-<div id="message"> </div>
+
 <form name="eventform" id="eventform" method="POST">
 <p><label for="user_id">Zooniverse User ID: </label><input type="text" name="user_id">
 </p><p><label for="subject_id">Zooniverse Subject ID: </label><input type="text" name="subject_id">
@@ -47,5 +46,5 @@ $(document).ready(function(){
     <option value="comment">Comment</option>
     <option value="classify">Classify</option>
 </select>
-</p><p><input type="button" class="btn btn-info" id="log" value="Log Event"></form>
-</p></body></html>
+</p><p><input type="button" class="btn btn-info" id="log" value="Log Event"></form></p>
+<p><div id="message"> </div></p></body></html>
