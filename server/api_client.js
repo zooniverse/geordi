@@ -44,8 +44,8 @@ exports.addEvent = addEvent;
  If parameters object contains key 'user-id' we add a filter to only include events corresponding to that user
  If parameters object contains key 'subject-id' we add a filter to only include events corresponding to that subject
  If parameters object contains key 'related-id' we add a filter to only include events corresponding to that related ID
- If parameters object contains key 'start-date' we add a filter to only include events on or after the specified start date
- If parameters object contains key 'end-date' we add a filter to only include events before or on the specified end date
+ If parameters object contains key 'start-date' we add a filter to only include events on or after the specified start date (note: if no time specified, assume midnight)
+ If parameters object contains key 'end-date' we add a filter to only include events before or on the specified end date (note: if no time specified, assume midnight)
 
  response is the handle to the response to allow writing to it.
  callback is the function to execute once a response is received.

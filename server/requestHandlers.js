@@ -40,8 +40,7 @@ function listEvents(response, request) {
     var callback = function (response, events) {
         if (events) {
             response.writeHead(201, {"Content-Type": "application/json"});
-            console.log(events);
-            response.write(events);
+            response.write(JSON.stringify(events));
             response.end();
         }
         else {
