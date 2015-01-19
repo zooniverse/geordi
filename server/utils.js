@@ -24,18 +24,20 @@ function eventChecker(event, parameters) {
     for (var p in parameters) {
         if (condition) {
             if (parameters.hasOwnProperty(p)) {
-                if (p == "start_date") {
-                    condition = condition && (event['time'] >= parameters[p]);
-                }
-                else if (p == "end_date") {
-                    condition = condition && (event['time'] <= parameters[p]);
-                }
-                else if (["user_id", "type", "id", "subject_id", "related_id"].indexOf(p) > -1) {
-                    condition = condition && event[p] == parameters[p];
-                }
-                else {
-                    condition = false;
-                    console.log("Warning: Filter was requested for a non-existent field '" + p + "'. Filtering disabled.");
+                if (parameters[p]) {
+                    if (p == "start_date") {
+                        condition = condition && (event['time'] >= parameters[p]);
+                    }
+                    else if (p == "end_date") {
+                        condition = condition && (event['time'] <= parameters[p]);
+                    }
+                    else if (["user_id", "type", "id", "subject_id", "related_id"].indexOf(p) > -1) {
+                        condition = condition && event[p] == parameters[p];
+                    }
+                    else {
+                        condition = false;
+                        console.log("Warning: Filter was requested for a non-existent field '" + p + "'. Filtering disabled.");
+                    }
                 }
             }
         }

@@ -51,6 +51,7 @@ exports.addEvent = addEvent;
  callback is the function to execute once a response is received.
  */
 function listEvents(parameters, response, callback) {
+    console.log('trying to list events matching parameters '+JSON.stringify(parameters));
     var headers = {
         'Content-Type': 'application/json; charset=utf-8',
         'Content-Length': 0
