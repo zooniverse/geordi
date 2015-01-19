@@ -1,5 +1,6 @@
 var utils = require('./utils');
 var api = require('./api_client');
+var url = require('url');
 var fs = require('fs');
 
 function testLogEvent(response) {
@@ -21,13 +22,11 @@ function logEvent(response, postData) {
     console.log(postData);
     var eventData = utils.getEventDataFromPost(postData);
     var success = api.addEvent(eventData);
-    if (success)
-    {
+    if (success) {
         response.writeHead(201, {"Content-Type": "application/json"});
         response.end();
     }
-    else
-    {
+    else {
         response.writeHead(500, {"Content-Type": "application/json"});
         response.end();
     }
@@ -35,18 +34,17 @@ function logEvent(response, postData) {
 
 exports.logEvent = logEvent;
 
-function listEvents(response, parameters) {
+function listEvents(response, request) {
     console.log("Request handler 'listEvents' was called.");
-    console.log(postData);
+    var parameters = url.parse(request.url, true).query;
+    console.log(parameters);
     var events = api.listEvents(parameters);
-    if (events)
-    {
+    if (events) {
         response.writeHead(201, {"Content-Type": "application/json"});
         response.write(events);
         response.end();
     }
-    else
-    {
+    else {
         response.writeHead(500, {"Content-Type": "application/json"});
         response.end();
     }

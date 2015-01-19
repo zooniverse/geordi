@@ -1,7 +1,7 @@
 var http = require('http');
+var utils = require('./utils');
 
-function addEvent(eventData)
-{
+function addEvent(eventData) {
     var dataString = JSON.stringify(eventData);
 
     var headers = {
@@ -17,39 +17,37 @@ function addEvent(eventData)
         headers: headers
     };
 
-    var req = http.request(options, function(res) {
-      res.setEncoding('utf-8');
-      var responseString = '';
-      res.on('data', function(data) {
-        responseString += data;
-      });
-      res.on('end', function() {
-        var resultObject = JSON.parse(responseString);
-         return true;
-      });
+    var req = http.request(options, function (res) {
+        res.setEncoding('utf-8');
+        var responseString = '';
+        res.on('data', function (data) {
+            responseString += data;
+        });
+        res.on('end', function () {
+            var resultObject = JSON.parse(responseString);
+            return true;
+        });
     });
-    req.on('error', function(e) {
-      console.log(e);
-      return false;
+    req.on('error', function (e) {
+        console.log(e);
+        return false;
     });
-    req.write('{"events":['+dataString+']}');
+    req.write('{"events":[' + dataString + ']}');
     req.end();
 };
 
 exports.addEvent = addEvent;
 
 /*
-    This will list all events that meet the specified parameters.
-    If parameters object is empty, we return all events
-    If parameters object contains key 'user-id' we add a filter to only include events corresponding to that user
-    If parameters object contains key 'subject-id' we add a filter to only include events corresponding to that subject
-    If parameters object contains key 'start-date' we add a filter to only include events on or after the specified start date
-    If parameters object contains key 'end-date' we add a filter to only include events before or on the specified end date
+ This will list all events that meet the specified parameters.
+ If parameters object is empty, we return all events
+ If parameters object contains key 'user-id' we add a filter to only include events corresponding to that user
+ If parameters object contains key 'subject-id' we add a filter to only include events corresponding to that subject
+ If parameters object contains key 'related-id' we add a filter to only include events corresponding to that related ID
+ If parameters object contains key 'start-date' we add a filter to only include events on or after the specified start date
+ If parameters object contains key 'end-date' we add a filter to only include events before or on the specified end date
  */
-function listEvents(parameters)
-{
-    var dataString = JSON.stringify(eventData);
-
+function listEvents(parameters) {
     var headers = {
         'Content-Type': 'application/json; charset=utf-8',
         'Content-Length': 0
@@ -63,20 +61,27 @@ function listEvents(parameters)
         headers: headers
     };
 
-    var req = http.request(options, function(res) {
-      res.setEncoding('utf-8');
-      var responseString = '';
-      res.on('data', function(data) {
-        responseString += data;
-      });
-      res.on('end', function() {
-        var resultObject = JSON.parse(responseString);
-        return resultObject;
-      });
+    var req = http.request(options, function (res) {
+        res.setEncoding('utf-8');
+        var responseString = '';
+        res.on('data', function (data) {
+            responseString += data;
+        });
+        res.on('end', function () {
+            var eventsList = JSON.parse(responseString)['events'];
+            var filteredList = [];
+            var count = 0;
+            eventsList.forEach(function (event) {
+                if (utils.eventChecker(event, parameters)) {
+                    filteredList.push(event);
+                }
+            });
+            return true;
+        });
     });
-    req.on('error', function(e) {
-      console.log(e);
-      return false;
+    req.on('error', function (e) {
+        console.log(e);
+        return false;
     });
     req.end();
 };
