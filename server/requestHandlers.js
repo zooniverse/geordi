@@ -17,6 +17,20 @@ function testLogEvent(response) {
 
 exports.testLogEvent = testLogEvent;
 
+function testListEvents(response) {
+    console.log("Request handler 'testListEvents' was called.");
+
+    fs.readFile('html/tests/listEvents.html',
+        function (err, data) {
+            response.writeHead(200, {"Content-Type": "text/html"});
+            response.write(data);
+            response.end();
+        }
+    );
+}
+
+exports.testListEvents = testListEvents;
+
 function logEvent(response, postData) {
     console.log("Request handler 'logEvent' was called.");
     console.log(postData);
