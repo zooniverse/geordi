@@ -34,3 +34,22 @@ function logEvent(response, postData) {
 }
 
 exports.logEvent = logEvent;
+
+function listEvents(response, parameters) {
+    console.log("Request handler 'listEvents' was called.");
+    console.log(postData);
+    var events = api.listEvents(parameters);
+    if (events)
+    {
+        response.writeHead(201, {"Content-Type": "application/json"});
+        response.write(events);
+        response.end();
+    }
+    else
+    {
+        response.writeHead(500, {"Content-Type": "application/json"});
+        response.end();
+    }
+}
+
+exports.listEvents = listEvents;
