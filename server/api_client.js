@@ -46,8 +46,11 @@ exports.addEvent = addEvent;
  If parameters object contains key 'related-id' we add a filter to only include events corresponding to that related ID
  If parameters object contains key 'start-date' we add a filter to only include events on or after the specified start date
  If parameters object contains key 'end-date' we add a filter to only include events before or on the specified end date
+
+ response is the handle to the response to allow writing to it.
+ callback is the function to execute once a response is received.
  */
-function listEvents(parameters) {
+function listEvents(parameters, response, callback) {
     var headers = {
         'Content-Type': 'application/json; charset=utf-8',
         'Content-Length': 0
@@ -70,17 +73,18 @@ function listEvents(parameters) {
         res.on('end', function () {
             var eventsList = JSON.parse(responseString)['events'];
             var filteredList = [];
-            var count = 0;
             eventsList.forEach(function (event) {
                 if (utils.eventChecker(event, parameters)) {
                     filteredList.push(event);
                 }
             });
+            callback(response, filteredList);
             return true;
         });
     });
     req.on('error', function (e) {
         console.log(e);
+        callback(response, [e]);
         return false;
     });
     req.end();

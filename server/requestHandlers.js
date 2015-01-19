@@ -37,17 +37,19 @@ exports.logEvent = logEvent;
 function listEvents(response, request) {
     console.log("Request handler 'listEvents' was called.");
     var parameters = url.parse(request.url, true).query;
-    console.log(parameters);
-    var events = api.listEvents(parameters);
-    if (events) {
-        response.writeHead(201, {"Content-Type": "application/json"});
-        response.write(events);
-        response.end();
+    var callback = function (response, events) {
+        if (events) {
+            response.writeHead(201, {"Content-Type": "application/json"});
+            console.log(events);
+            response.write(events);
+            response.end();
+        }
+        else {
+            response.writeHead(500, {"Content-Type": "application/json"});
+            response.end();
+        }
     }
-    else {
-        response.writeHead(500, {"Content-Type": "application/json"});
-        response.end();
-    }
+    api.listEvents(parameters, response, callback);
 }
 
 exports.listEvents = listEvents;
