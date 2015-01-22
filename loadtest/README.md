@@ -15,10 +15,10 @@ This is a script to load test the API. For now it just tests the POST method, wh
     ./loadtest.sh <username> <address> <posts> <workers>
 
 where:
-`username` is the name you want to use to identify posts from this client machine.
-`address` is the hostname:port address, as specified in API.js on the API server.
-`posts` is the number of posts each concurrent worker will create
-`workers` is the number of workers that should be spawned on this machine.
+* `username` is the name you want to use to identify posts from this client machine.
+* `address` is the hostname:port address, as specified in API.js on the API server.
+* `posts` is the number of posts each concurrent worker will create
+* `workers` is the number of workers that should be spawned on this machine.
 
 
 
