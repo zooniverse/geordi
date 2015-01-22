@@ -4,7 +4,7 @@
   "description": "Client for simpler access to storage API",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cd tests;nodeunit utils_tests.js;cd .."
   },
   "repository": {
     "type": "git",
@@ -25,5 +25,8 @@
   "homepage": "https://github.com/zooniverse/user-analytics",
   "devDependencies": {
     "nodeunit": "^0.9.0"
+  },
+  "dependencies": {
+    "coffee-script": "^1.8.0"
   }
 }

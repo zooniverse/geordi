@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/zooniverse/user-analytics",
   "dependencies": {
+    "coffee-script": "^1.8.0",
     "fortune": "^0.2.4",
     "i": "^0.3.2"
   },
