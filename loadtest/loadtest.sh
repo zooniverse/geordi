@@ -1,18 +1,37 @@
 #!/bin/bash
-if [ "$#" -ne 3 ]
+if [ "$#" -ne 4 ]
 then
-  echo "Usage: loadtest.sh <username> <hostname:port> <number of event posts>"
+  echo "Usage: loadtest.sh <username> <hostname:port> <number of event posts per worker> <number of concurrent workers>"
   exit 1
 fi
 USER=$1
 HOSTANDPORT=$2
-NOW=$(date +"%Y-%m-%dT%H:%M:%S.000Z")
 POSTS=$3
-echo "Posting $POSTS user events by user $USER to the API at http://$HOSTANDPORT/events ..."
-for i in `seq 1 $POSTS`;
+WORKERS=$4
+echo 'Initializing $WORKERS to post $POSTS user events by user $USER to the API at http://$HOSTANDPORT/events ...'
+declare -a pid
+for w in `seq 1 $WORKERS`;
 do
-	json='{"events":[{"time":"'$NOW'","user_id":"'$USER'","subject_id":"42","related_id":"'$i'","type":"loadtest"}]}'
-	address='http://'$HOSTANDPORT'/events'
-	curl -X POST -H "Content-Type:application/json" -d $json $address
+    ./worker.sh $USER 'Worker'$w $HOSTANDPORT $POSTS &
+    echo $!
+    echo $w
+    pid[$w]=$!
 done
-echo "Done posting $POSTS user events."
+echo 'All workers initialized.'
+errors=0
+for w in `seq 1 $WORKERS`;
+do
+    wait ${pid[w]}
+    result=$?
+    if [ $result -eq 0 ]
+    then
+        echo "Worker$w completed successfully."
+    else
+        errors++
+        echo "Worker$w failed to complete (return code $result)."
+    fi
+done
+total=$((POSTS*WORKERS))
+echo "All workers have completed processing ($POSTS posts x $WORKERS workers = $total new user events - assuming no errors)."
+echo "There were $errors errors."
+
