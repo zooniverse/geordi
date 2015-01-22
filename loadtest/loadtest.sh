@@ -1,7 +1,7 @@
 #!/bin/bash
 if [ "$#" -ne 1 ]
 then
-  echo "Usage: loadtest.sh <username>"
+  echo "Usage: loadtest.sh <username>   (where <username> is a unique name for your client)"
   exit 1
 fi
 
