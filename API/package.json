@@ -27,7 +27,8 @@
   "dependencies": {
     "coffee-script": "^1.8.0",
     "fortune": "^0.2.4",
-    "i": "^0.3.2"
+    "i": "^0.3.2",
+    "minimist": "^1.1.0"
   },
   "devDependencies": {
     "nodeunit": "^0.9.0"
