@@ -1,6 +1,7 @@
 argv = require("minimist")(process.argv.slice(2))
 API = require("fortune")
-if (argv==undefined)
+
+if argv._.length == 0
   console.log "Usage: node API.js <port>"
 else
   port = argv['_'][0]
