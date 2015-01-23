@@ -18,6 +18,6 @@ ADD ./supervisor.conf /etc/supervisor/conf.d/api.conf
 
 RUN mkdir /app/log/
 
-EXPOSE 8090
+EXPOSE 80
 
 ENTRYPOINT [ "/usr/bin/supervisord" ]
