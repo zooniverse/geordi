@@ -11,7 +11,7 @@
     };
     options = {
       host: "localhost",
-      port: 8090,
+      port: 80,
       path: "/events/",
       method: "POST",
       headers: headers
@@ -46,7 +46,7 @@
     };
     options = {
       host: "localhost",
-      port: 8090,
+      port: 80,
       path: "/events/",
       method: "GET",
       headers: headers

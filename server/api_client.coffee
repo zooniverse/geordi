@@ -6,7 +6,7 @@ addEvent = (eventData) ->
 
   options =
     host: "localhost" # TODO: move to settings file
-    port: 8090 #
+    port: 80 #
     path: "/events/" #
     method: "POST"
     headers: headers
@@ -51,7 +51,7 @@ listEvents = (parameters, response, callback) ->
 
   options =
     host: "localhost" # TODO: move to settings file
-    port: 8090 #
+    port: 80 #
     path: "/events/" #
     method: "GET"
     headers: headers

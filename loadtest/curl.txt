@@ -1,1 +1,1 @@
-curl -X POST -H "Content-Type:application/json" -d '{"events":[{"time":"2015-01-21T10:39:04.002Z","user_id":"1","subject_id":"2","related_id":"3","type":"clitest"}]}' http://localhost:8090/events
+curl -X POST -H "Content-Type:application/json" -d '{"events":[{"time":"2015-01-21T10:39:04.002Z","user_id":"1","subject_id":"2","related_id":"3","type":"clitest"}]}' http://localhost:80/events
