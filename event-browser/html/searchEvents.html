@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<h2>List User Events</h2>
+
+<form name="eventform" id="eventform" action="/filterEvents" method="GET">
+    <p><label for="user_id">Zooniverse User ID: </label><input type="text" name="user_id">
+    </p>
+
+    <p><label for="subject_id">Zooniverse Subject ID: </label><input type="text" name="subject_id">
+    </p>
+
+    <p><label for="related_id">Zooniverse Related ID (e.g. collection, classification, post, meme or
+        comment): </label><input type="text" name="related_id">
+    </p>
+
+    <p><label for="type">Type of User Event: </label><select name="type">
+        <option disabled selected> -- select an event type --</option>
+        <option value="login">Login</option>
+        <option value="logout">Logout</option>
+        <!-- <option value="idle">Become Idle</option> -->
+        <option value="favorite">Favourite</option>
+        <!-- <option value="collect">Collect</option> -->
+        <option value="tweet">Tweet</option>
+        <option value="pin">Pin</option>
+        <option value="share">Share</option>
+        <!-- <option value="meme">Meme</option> -->
+        <option value="unfavorite">Unfavorite</option>
+        <option value="map">View map</option>
+        <option value="clear">Clear Filters</option>
+        <option value="tutorial">Launch Tutorial</option>
+        <option value="leave">Leave Site</option>
+        <!-- <option value="post">Post</option> -->
+        <!-- <option value="comment">Comment</option> -->
+        <option value="classify">Classify</option>
+        <option value="view">View Subject</option>
+        <option value="talk">View Talk Page for Subject</option>
+    </select>
+    </p>
+    <p><label for="start_date">Start Date (or Datetime): </label><select name="start_date">
+    </p>
+
+    <p><label for="end_date">End Date (or Datetime): </label><select name="end_date">
+    </p>
+
+    <p>
+        <small>Font size for date times is YYYY-MM-DD format or YYYY-MM-DDTHH:MM:SS.sssZ.</small>
+    </p>
+    <p><input type="submit" class="btn btn-info" id="log" value="List Matching Events"></form>
+</p>
+</body>
+</html>
