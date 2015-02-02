@@ -1,4 +1,4 @@
-# user-analytics load testing
+# geordi load testing
 
 This is a script to load test the API. For now it just tests the POST method, which at the moment is the only one that will be used by many users.
 
@@ -6,7 +6,7 @@ This is a script to load test the API. For now it just tests the POST method, wh
 
 (from the directory above loadtest)
 
-    node API.js
+    node geordi.js <port>
 
 ## To test the API:
 
