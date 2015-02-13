@@ -2,7 +2,7 @@ argv = require("minimist")(process.argv.slice(2))
 API = require("fortune")
 
 if argv._.length == 0
-  console.log "Usage: node API.js <port>"
+  console.log "Usage: node geordi.js <port>"
 else
   port = argv['_'][0]
   app = API(db: "user-event-log").resource("user",

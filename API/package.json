@@ -1,6 +1,6 @@
 {
-  "name": "user-analytics-API",
-  "version": "0.5.0",
+  "name": "geordi",
+  "version": "0.6.0",
   "description": "A simple Zooniverse user event logger, conforming to JSON API",
   "main": "API.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/zooniverse/user-analytics"
+    "url": "https://github.com/zooniverse/geordi"
   },
   "keywords": [
     "zooniverse",
@@ -21,9 +21,9 @@
   "author": "Alex Bowyer",
   "license": "Apache",
   "bugs": {
-    "url": "https://github.com/zooniverse/user-analytics/issues"
+    "url": "https://github.com/zooniverse/geordi/issues"
   },
-  "homepage": "https://github.com/zooniverse/user-analytics",
+  "homepage": "https://github.com/zooniverse/geordi",
   "dependencies": {
     "coffee-script": "^1.8.0",
     "fortune": "^0.2.4",
