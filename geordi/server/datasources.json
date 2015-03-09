@@ -1,0 +1,15 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "geordi-mysql": {
+    "host": "zooniverse-db1.cezuuccr9cw6.us-east-1.rds.amazonaws.com",
+    "url": "zooniverse-db1.cezuuccr9cw6.us-east-1.rds.amazonaws.com",
+    "database": "geordi",
+    "password": "8E%a_~<n-29$>8x",
+    "name": "geordi-mysql",
+    "connector": "mysql",
+    "user": "geordi"
+  }
+}

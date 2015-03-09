@@ -1,0 +1,55 @@
+{
+  "name": "event",
+  "plural": "events",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "properties": {
+    "time": {
+      "type": "date",
+      "required": true,
+      "description": "The date and time of the event (on the server). Defaults to NOW()",
+      "defaultFn": "now"
+    },
+    "userID": {
+      "type": "string",
+      "required": true,
+      "description": "The Zooniverse User ID of the user performing the event"
+    },
+    "type": {
+      "type": "string",
+      "required": true,
+      "description": "The event type e.g. login, leave, classify, view, etc"
+    },
+    "subjectID": {
+      "type": "string",
+      "description": "If the event applies to a subject, e.g. classify, then this is the Zooniverse ID of the subject"
+    },
+    "relatedID": {
+      "type": "string",
+      "description": "If applicable, this may contain a related ID such as collection ID, classification ID, etc"
+    },
+    "projectToken": {
+      "type": "string",
+      "required": true,
+      "description": "The project identifier as used at https://api.zooniverse.org/projects/list , e.g. 'serengeti' )"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "ALLOW",
+      "property": "create"
+    }
+  ],
+  "methods": []
+}
