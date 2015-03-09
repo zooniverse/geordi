@@ -32,6 +32,14 @@
       "type": "string",
       "required": true,
       "description": "The project identifier as used at https://api.zooniverse.org/projects/list , e.g. 'serengeti' )"
+    },
+    "experiment": {
+      "type": "string",
+      "description": "If an experiment was running at the time, this is the name of the experiment, e.g. 'SerengetiHappinessExperiment1'"
+    },
+    "cohort": {
+      "type": "string",
+      "description": "If an experiment was running at the time, this is the name of the cohort this user was assigned to, e.g. 'control'"
     }
   },
   "validations": [],
