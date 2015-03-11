@@ -1,0 +1,15 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "geordi-mysql": {
+    "host": "",
+    "url": "",
+    "database": "",
+    "password": "",
+    "name": "",
+    "connector": "mysql",
+    "user": ""
+  }
+}

@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND noninteractive
 WORKDIR /app
 
 RUN apt-get update && apt-get -y upgrade && \
-    apt-get install -y curl supervisor && \
+    apt-get install -y curl supervisor git && \
     curl https://deb.nodesource.com/setup | bash - && \
     apt-get install -y nodejs build-essential automake  autoconf && \
     apt-get clean
