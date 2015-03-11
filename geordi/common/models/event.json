@@ -40,6 +40,14 @@
     "cohort": {
       "type": "string",
       "description": "If an experiment was running at the time, this is the name of the cohort this user was assigned to, e.g. 'control'"
+    },
+    "errorCode": {
+      "type": "string",
+      "description": "if an error occurred in trying to perform this event, the error code will be logged here (e.g. 500)"
+    },
+    "errorDescription": {
+      "type": "string",
+      "description": "if an error occurred in trying to perform this event, details will be logged here"
     }
   },
   "validations": [],
