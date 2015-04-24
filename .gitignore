@@ -15,3 +15,4 @@ bin/**
 .env
 *~
 */node_modules/**
+**/geordi/**/*.example
