@@ -12,7 +12,6 @@ geordi:
   build: ./
   volumes:
     - ./:/app
-    - ./config/docker:/app/server/
   entrypoint:
     - "/app/scripts/docker/dev.sh"
   ports:

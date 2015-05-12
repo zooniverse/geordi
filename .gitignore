@@ -16,3 +16,4 @@ bin/**
 *~
 */node_modules/**
 **/geordi/**/*.example
+**/geordi/server/datasources.json
