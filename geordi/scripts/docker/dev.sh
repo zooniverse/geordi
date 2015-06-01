@@ -1,4 +1,4 @@
 #!/bin/bash -ex
 npm install
-cp -f /geordi/config/docker/datasources.json /geordi/server/
+cp -f /app/config/docker/datasources.json /app/server/
 /usr/bin/supervisord

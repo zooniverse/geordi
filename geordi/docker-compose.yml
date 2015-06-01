@@ -11,9 +11,9 @@ mysql:
 geordi:
   build: ./
   volumes:
-    - ./:/geordi
+    - ./:/app
   entrypoint:
-    - "/geordi/scripts/docker/dev.sh"
+    - "/app/scripts/docker/dev.sh"
   ports:
     - "3030:80"
   links:

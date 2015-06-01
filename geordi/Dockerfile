@@ -2,7 +2,7 @@ FROM ubuntu:14.04
 
 ENV DEBIAN_FRONTEND noninteractive
 
-WORKDIR /geordi
+WORKDIR /app
 
 RUN apt-get update && apt-get -y upgrade && \
     apt-get install -y curl supervisor git && \
@@ -10,13 +10,13 @@ RUN apt-get update && apt-get -y upgrade && \
     apt-get install -y nodejs build-essential automake  autoconf && \
     apt-get clean
 
-ADD package.json /geordi/
+ADD package.json /app/
 RUN npm install
 
-ADD ./ /geordi/
+ADD ./ /app/
 ADD ./supervisor.conf /etc/supervisor/conf.d/api.conf
 
-RUN mkdir -p /geordi/log/
+RUN mkdir -p /app/log/
 
 EXPOSE 80
 
