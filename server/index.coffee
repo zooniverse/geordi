@@ -1,9 +1,0 @@
-server = require("./server")
-router = require("./router")
-requestHandlers = require("./requestHandlers")
-handle = {}
-handle["/test/logEvent"] = requestHandlers.testLogEvent
-handle["/test/listEvents"] = requestHandlers.testListEvents
-handle["/logEvent"] = requestHandlers.logEvent
-handle["/listEvents"] = requestHandlers.listEvents
-server.start router.route, handle
