@@ -6,9 +6,14 @@
   "properties": {
     "time": {
       "type": "date",
-      "required": true,
-      "description": "The date and time of the event (on the server). Defaults to NOW()",
+      "required": false,
+      "description": "The date and time of the event (on the server).",
       "defaultFn": "now"
+    },
+    "browserTime": {
+      "type": "date",
+      "required": false,
+      "description": "The date and time of the event (on the client)."
     },
     "userID": {
       "type": "string",
@@ -32,6 +37,28 @@
       "type": "string",
       "required": true,
       "description": "The project identifier as used at https://api.zooniverse.org/projects/list , e.g. 'serengeti' )"
+    },
+    "data": {
+      "type": "string",
+      "required": false,
+      "description": "An optional bundle of JSON data to store additional info about the logged event."
+    },
+    "sessionNumber": {
+      "type": "number",
+      "required": false,
+      "description": "The user-specific session counter for this event (new session starts after 30 mins inactivity)",
+      "default": 1
+    },
+    "eventNumber": {
+      "type": "number",
+      "required": false,
+      "description": "The session-specific event counter for this event (new session starts after 30 mins inactivity)",
+      "default": 1
+    },
+    "serverURL": {
+      "type": "string",
+      "required": false,
+      "description": "The URL of the website from which the logging request originated"
     },
     "experiment": {
       "type": "string",
