@@ -16,7 +16,7 @@ RUN npm install
 ADD ./ /app/
 ADD ./supervisor.conf /etc/supervisor/conf.d/api.conf
 
-RUN mkdir /app/log/
+RUN mkdir -p /app/log/
 
 EXPOSE 80
 
