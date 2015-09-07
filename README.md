@@ -10,6 +10,22 @@ To post an event to Geordi, you should use curl, a REST client (I recommend [Adv
 
 When posting an event, you must provide the fields `userID`, `type` and `projectToken`. A number of other fields are optional and can be posted along with the event. See the next section for more details on the fields you can use.
 
+Here is an example of posting via CURL (line breaks and spacing added for readability):
+```
+curl    
+  --request POST    
+  --header 'Content-Type: application/json'    
+  --data 
+          '{
+             "userID":"alex",
+             "type":"identify",
+             "subjectID":"ASG001d692", 
+             "relatedID":"zebra",
+             "projectToken":"serengeti"   
+           }'
+  http://geordi.staging.zooniverse.org/api/events
+```
+
 Here is an example of how to post to Geordi from JavaScript:
 
 ```
