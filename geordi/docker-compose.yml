@@ -1,0 +1,20 @@
+mysql:
+  image: mysql
+  # ports:
+  #   - "3306:3306"
+  environment:
+    - "MYSQL_ROOT_PASSWORD=geordi_root"
+    - "MYSQL_DATABASE=geordi_development"
+    - "MYSQL_USER=geordi"
+    - "MYSQL_PASSWORD=geordi"
+
+geordi:
+  build: ./
+  volumes:
+    - ./:/app
+  entrypoint:
+    - "/app/scripts/docker/dev.sh"
+  ports:
+    - "3030:80"
+  links:
+    - mysql

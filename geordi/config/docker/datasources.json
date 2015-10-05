@@ -1,0 +1,15 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "geordi-mysql": {
+    "host": "mysql",
+    "port": 3306,
+    "database": "geordi_development",
+    "username": "geordi",
+    "password": "geordi",
+    "connector": "mysql",
+    "debug": true
+  }
+}
