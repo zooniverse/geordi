@@ -93,7 +93,7 @@ Please take care not to modify the live "event" table in the MySQL DB as it is c
 
 For more details on accessing the database, see below. I recommend using a GUI such as [Sequel Pro](http://www.sequelpro.com/) for OS X, [HeidiSQL](http://www.heidisql.com/) for Windows, or phpMyAdmin.
 
-Geordi also logs all events to the "Zooniverse Global" Google Analytics account. This does not allow viewing of individual events, but can be useful for exploring the data in aggregate. The events can be found under "Behavior > Events" or, if you have access, via [this link](https://www.google.com/analytics/web/?hl=en#report/content-event-overview/a1224199w25826018p97262563/).
+Geordi also logs all events to the "Zooniverse Global" Google Analytics account. This does not allow viewing of individual events, but can be useful for exploring the data in aggregate. The events can be found under "Behavior > Events" or, if you have access, via [this link](https://www.google.com/analytics/web/?hl=en#report/content-event-overview/a1224199w25826018p97262563/). The event type is passed as the "Event Action" in Google Analytics, and the userID is passed as the Event Label.
 
 ## History
 
