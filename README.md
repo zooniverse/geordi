@@ -6,11 +6,11 @@ It receives posted events via its REST endpoint `http://<geordi-server>/api/even
 
 ## Posting an event to Geordi
 
-To post an event to Geordi, you should use curl, a REST client (I recommend [Advanced REST client](https://chrome.google.com/webstore/detail/advanced-rest-client/hgmloofddffdnphfgcellkdfbfbjeloo) for Google Chrome, or your own script.
+To try out posting an event to Geordi, you could use cURL, a REST client (I recommend [Advanced REST client](https://chrome.google.com/webstore/detail/advanced-rest-client/hgmloofddffdnphfgcellkdfbfbjeloo) for Google Chrome, or your own script.
 
 When posting an event, you must provide the fields `userID`, `type` and `projectToken`. A number of other fields are optional and can be posted along with the event. See the next section for more details on the fields you can use.
 
-Here is an example of posting via CURL (line breaks and spacing added for readability):
+Here is an example of posting via cURL (line breaks and spacing added for readability):
 ```
 curl    
   --request POST    
@@ -106,9 +106,7 @@ It is called Geordi after Geordi LaForge from Star Trek, whose visor allows him 
 
 We have two servers, one for staging at http://geordi.staging.zooniverse.org/ and one for production at http://geordi.zooniverse.org/.
 
-Currently staging is running v2.1 (which includes the new `browserTime`, `data`, `serverURL`, `sessionNumber` and `eventNumber` parameters.
-Production is running v2.0, which does not support these new fields.
-Production will be updated once the current Galaxy Zoo intervention experiment is concluded.
+Currently staging and production are both running v2.1 (which includes the new `browserTime`, `data`, `serverURL`, `sessionNumber` and `eventNumber` parameters).
 
 The credentials for accessing the production server either with read-write access or read-only access are in the Zooniverse password repository. The staging server credentials are stored in S3 production configs directory.
 
