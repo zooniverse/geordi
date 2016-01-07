@@ -3,7 +3,10 @@ module.exports = function(Event) {
   Event.observe('before save', function(ctx, next) {
     if (ctx.instance) {
       //ctx.instance.clientIP = (require("domain")).active.members[1].req.ip;
-      ctx.instance.clientIP = (require('loopback')).getCurrentContext().active.http.req.ip;
+      loopback = require('loopback');
+      req = loopback.getCurrentContext().active.http.req
+      ctx.instance.clientIP = req.ip;
+      ctx.instance.serverURL = req.headers.origin;
     }
     next();
   });
