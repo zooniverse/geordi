@@ -5,6 +5,10 @@
   "scripts": {
     "pretest": "jshint ."
   },
+  "engineStrict": true,
+  "engines": {
+    "node": ">=4.2.2"
+  },
   "dependencies": {
     "compression": "^1.5.2",
     "errorhandler": "^1.4.2",
