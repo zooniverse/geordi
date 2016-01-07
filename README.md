@@ -106,8 +106,8 @@ It is called Geordi after Geordi LaForge from Star Trek, whose visor allows him 
 
 We have two servers, one for staging at http://geordi.staging.zooniverse.org/ and one for production at http://geordi.zooniverse.org/.
 
-Currently staging is running v2.1 (which includes the new `browserTime`, `data`, `serverURL`, `sessionNumber` and `eventNumber` parameters.
-Production is running v2.0, which does not support these new fields.
+Currently staging is running v2.2 (which includes the new `browserTime`, `data`, `serverURL`, `clientIP`, `userSeq`, `sessionNumber` and `eventNumber` parameters).
+Production is running v2.1, (which includes the new `browserTime`, `data`, `serverURL`, `sessionNumber` and `eventNumber` parameters but not `clientIP` or `userSeq` or automatic filling of session and event number).
 Production will be updated once the current Galaxy Zoo intervention experiment is concluded.
 
 The credentials for accessing the production server either with read-write access or read-only access are in the Zooniverse password repository. The staging server credentials are stored in S3 production configs directory.
