@@ -60,6 +60,11 @@
       "required": false,
       "description": "The URL of the website from which the logging request originated"
     },
+    "clientIP": {
+      "type": "string",
+      "required": false,
+      "description": "The IP address of the browser from which the website requesting logging was loaded"
+    },
     "experiment": {
       "type": "string",
       "description": "If an experiment was running at the time, this is the name of the experiment, e.g. 'SerengetiHappinessExperiment1'"
