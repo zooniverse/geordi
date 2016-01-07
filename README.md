@@ -112,7 +112,7 @@ Currently staging is running v2.2 (which includes the new `browserTime`, `data`,
 Production is running v2.1, (which includes the new `browserTime`, `data`, `serverURL`, `sessionNumber` and `eventNumber` parameters but not `clientIP` or `userSeq` or automatic filling of session and event number).
 Production will be updated once the current Galaxy Zoo intervention experiment is concluded.
 
-The credentials for accessing the production server either with read-write access or read-only access are in the Zooniverse password repository. The staging server credentials are stored in S3 production configs directory.
+The credentials for accessing the production server either with read-write access or read-only access are in the Zooniverse password repository, and the production `datasources.json` file is in the S3 production configs directory. The staging server credentials are stored here on github in the `datasources.json` file in `config/docker` directory.
 
 Note: It is recommended that for all analysis and reading of Geordi data you use the read-only account. The full account should only be used for admin.
 
