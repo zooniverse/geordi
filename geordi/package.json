@@ -2,6 +2,10 @@
   "name": "geordi",
   "version": "2.2.0",
   "main": "server/server.js",
+  "engineStrict": true,
+  "engines": {
+    "node": ">=4.2.2"
+  },
   "scripts": {
     "pretest": "jshint ."
   },
