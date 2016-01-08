@@ -6,7 +6,7 @@ WORKDIR /app
 
 RUN apt-get update && apt-get -y upgrade && \
     apt-get install -y curl supervisor git && \
-    curl https://deb.nodesource.com/setup | bash - && \
+    curl https://deb.nodesource.com/setup_4.x | bash - && \
     apt-get install -y nodejs build-essential automake  autoconf && \
     apt-get clean
 
