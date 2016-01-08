@@ -18,7 +18,7 @@
     "userID": {
       "type": "string",
       "required": true,
-      "description": "The Zooniverse User ID of the user performing the event"
+      "description": "The Zooniverse User ID of the user performing the event, or '(anonymous)'"
     },
     "type": {
       "type": "string",
@@ -43,22 +43,30 @@
       "required": false,
       "description": "An optional bundle of JSON data to store additional info about the logged event."
     },
+    "userSeq": {
+      "type": "number",
+      "required": false,
+      "description": "The user-specific sequence of this event relative to this user's other events, across all sessions"
+    },
     "sessionNumber": {
       "type": "number",
       "required": false,
-      "description": "The user-specific session counter for this event (new session starts after 30 mins inactivity)",
-      "default": 1
+      "description": "The user-specific session counter for this event (new session starts after 30 mins inactivity)"
     },
     "eventNumber": {
       "type": "number",
       "required": false,
-      "description": "The session-specific event counter for this event (new session starts after 30 mins inactivity)",
-      "default": 1
+      "description": "The user-session-specific event counter for this event (new session starts after 30 mins inactivity)"
     },
     "serverURL": {
       "type": "string",
       "required": false,
       "description": "The URL of the website from which the logging request originated"
+    },
+    "clientIP": {
+      "type": "string",
+      "required": false,
+      "description": "The IP address of the browser from which the website requesting logging was loaded"
     },
     "experiment": {
       "type": "string",
