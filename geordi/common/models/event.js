@@ -48,6 +48,7 @@ module.exports = function(Event) {
         }
       };
 
+      /*
       Event.findOne({where: {userID: ctx.instance.userID}, order: 'id DESC'}).then(
           function(prevEvent) {
             ctx.instance.userSeq = getUserSeqToUse(prevEvent);
@@ -63,6 +64,11 @@ module.exports = function(Event) {
           ctx.instance.eventNumber = counters.eventNumber;
           next();
       });
+      */
+      ctx.instance.userSeq = -1;
+      ctx.instance.sessionNumber = -1;
+      ctx.instance.eventNumber = -1;
+
     }
   });
 };
