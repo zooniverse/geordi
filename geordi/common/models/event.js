@@ -68,7 +68,7 @@ module.exports = function(Event) {
       ctx.instance.userSeq = -1;
       ctx.instance.sessionNumber = -1;
       ctx.instance.eventNumber = -1;
-
+      next();
     }
   });
 };
