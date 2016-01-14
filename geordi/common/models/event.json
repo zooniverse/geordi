@@ -58,6 +58,11 @@
       "required": false,
       "description": "The user-session-specific event counter for this event (new session starts after 30 mins inactivity)"
     },
+    "userAgent": {
+      "type": "string",
+      "required": false,
+      "description": "The user agent string of the browser from which the logging request originated"
+    },
     "serverURL": {
       "type": "string",
       "required": false,
