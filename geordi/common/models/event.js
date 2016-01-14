@@ -65,6 +65,12 @@ module.exports = function(Event) {
           next();
       });
       */
+      data = {};
+      loopback = require('loopback');
+      req = loopback.getCurrentContext().active.http.req;
+      data["headers"]=req.headers;
+      data["ip"]=req.ip;
+      ctx.instance.data = JSON.stringify(data);
       ctx.instance.userSeq = -1;
       ctx.instance.sessionNumber = -1;
       ctx.instance.eventNumber = -1;
