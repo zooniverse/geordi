@@ -7,8 +7,9 @@ module.exports = function(Event) {
       //ctx.instance.clientIP = (require("domain")).active.members[1].req.ip;
       loopback = require('loopback');
       req = loopback.getCurrentContext().active.http.req
-      ctx.instance.clientIP = req.ip;
+      ctx.instance.clientIP = req.headers["x-real-ip"];
       ctx.instance.serverURL = req.headers.origin;
+      ctx.instance.userAgent = req.headers["user-agent"];
 
       // calculate the new user sequence value based on previous event (or lack of)
       getUserSeqToUse = function(prevEvent) {
@@ -65,12 +66,6 @@ module.exports = function(Event) {
           next();
       });
       */
-      data = {};
-      loopback = require('loopback');
-      req = loopback.getCurrentContext().active.http.req;
-      data["headers"]=req.headers;
-      data["ip"]=req.ip;
-      ctx.instance.data = JSON.stringify(data).substring(0,512);
       ctx.instance.userSeq = -1;
       ctx.instance.sessionNumber = -1;
       ctx.instance.eventNumber = -1;
