@@ -39,6 +39,7 @@ module.exports = function(Event) {
         }
       };
 
+      Userseq = Event.app.models.Userseq;
       // check counters, and find the new counters to use
       Userseq.findOrCreate(
           { where: {userID: ctx.instance.userID}} ,
