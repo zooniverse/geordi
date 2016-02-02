@@ -1,6 +1,9 @@
 var SESSION_EXPIRATION_TIME_MINS = 30;
 
 module.exports = function(Event) {
+
+  var app = require('../../server/server');
+
   // model operation hook
   Event.observe('before save', function(ctx, next) {
     if (ctx.instance) {
@@ -13,8 +16,8 @@ module.exports = function(Event) {
 
       getSessionNumberAndEventNumberToUse = function(prevTime,prevSessionNumber,prevEventNumberWithinSession) {
         if (prevTime) {
-          expirationTimeFromLastEvent = new Date(prevTime + (SESSION_EXPIRATION_TIME_MINS * 60000));
-          now = new Date();
+          var expirationTimeFromLastEvent = new Date(prevTime.getTime() + (SESSION_EXPIRATION_TIME_MINS * 60000));
+          var now = new Date();
           if (now<expirationTimeFromLastEvent) {
             // continue previous session
             return {
@@ -39,41 +42,38 @@ module.exports = function(Event) {
         }
       };
 
+      var Userseq = app.models.Userseq;
+
       // check counters, and find the new counters to use
+      var thisInstance = ctx.instance;
       Userseq.findOrCreate(
           { where: {userID: ctx.instance.userID}} ,
           { userID: ctx.instance.userID,
-            nextSeq: 2,
+            nextSeq: 1,
             currentSession: 1,
-            currentEventNumberWithinThisSession: 1,
+            currentEventNumberWithinSession: 0,
             timeOfLastEvent: Date.now() },
            function(err, userseq) {
-               if (userseq.nextSeq == 2 &&
-                   userseq.currentSession == 1 &&
-                   userseq.currentEventNumberWithinThisSession == 1)
-               {
-                 // very first event for this user (which we just created)
-                 ctx.instance.userSeq = 1;
-                 ctx.instance.sessionNumber = 1;
-                 ctx.instance.eventNumber = 1;
-               }
-               else {
+               if (err) {
+                 console.log("Error while trying to access user seq table:");
+                 console.log(err);
+               } else {
                  // update sequences, checking for new session.
-                 ctx.instance.userSeq = userseq.nextSeq;
+                 thisInstance.userSeq = userseq.nextSeq;
                  var sessionNumberAndEventNumberToUse = getSessionNumberAndEventNumberToUse(
                      userseq.timeOfLastEvent,
                      userseq.currentSession,
-                     userseq.currentEventNumberWithinThisSession);
-                 ctx.instance.sessionNumber = sessionNumberAndEventNumberToUse.sessionNumber;
-                 ctx.instance.eventNumber = sessionNumberAndEventNumberToUse.eventNumber;
-                 // update the counters table
+                     userseq.currentEventNumberWithinSession);
+                 thisInstance.sessionNumber = sessionNumberAndEventNumberToUse.sessionNumber;
+                 thisInstance.eventNumber = sessionNumberAndEventNumberToUse.eventNumber;
                  userseq.nextSeq++;
                  userseq.currentSession = ctx.instance.sessionNumber;
-                 userseq.currentEventNumberWithinThisSession = ctx.instance.eventNumber;
+                 userseq.timeOfLastEvent = ctx.instance.time;
+                 userseq.currentEventNumberWithinSession = ctx.instance.eventNumber;
                  userseq.save();
                }
+               next();
            });
-      next();
     }
   });
 };
