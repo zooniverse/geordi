@@ -29,5 +29,9 @@
   "event": {
     "dataSource": "geordi-mysql",
     "public": true
+  },
+  "userseq": {
+    "dataSource": "geordi-mysql",
+    "public": true
   }
 }
