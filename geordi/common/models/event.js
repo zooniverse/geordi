@@ -1,6 +1,9 @@
 var SESSION_EXPIRATION_TIME_MINS = 30;
 
 module.exports = function(Event) {
+
+  var app = require('../../server/server');
+
   // model operation hook
   Event.observe('before save', function(ctx, next) {
     if (ctx.instance) {
@@ -39,7 +42,9 @@ module.exports = function(Event) {
         }
       };
 
-      Userseq = Event.app.models.Userseq;
+      var Userseq = app.models.Userseq;
+      //Userseq = Event.app.models.Userseq;
+
       // check counters, and find the new counters to use
       Userseq.findOrCreate(
           { where: {userID: ctx.instance.userID}} ,
