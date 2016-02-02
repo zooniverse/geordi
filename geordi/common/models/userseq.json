@@ -34,13 +34,7 @@
     }
   },
   "validations": [],
-  "relations": {
-    "lastEventID": {
-      "type": "hasOne",
-      "model": "event",
-      "foreignKey": "id"
-    }
-  },
+  "relations": [],
   "acls": [
     {
       "accessType": "EXECUTE",
