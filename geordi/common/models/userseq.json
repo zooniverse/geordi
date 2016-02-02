@@ -1,0 +1,60 @@
+{
+  "name": "userseq",
+  "plural": "userseqs",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "userID": {
+      "type": "string",
+      "required": true,
+      "description": "The Zooniverse User ID of the user performing the event, or '(anonymous)'"
+    },
+    "nextSeq": {
+      "type": "number",
+      "required": true,
+      "description": "The next available sequence number to be used for this user"
+    },
+    "currentSession": {
+      "type": "number",
+      "required": true,
+      "description": "The session number, starting at 1, of the user's current session (new sessions start after 30 mins)"
+    },
+    "currentEventNumberWithinSession": {
+      "type": "number",
+      "required": true,
+      "description": "The event number, starting at 1, of the last event within the user's session"
+    },
+    "timeOfLastEvent": {
+      "type": "date",
+      "required": true,
+      "description": "The time (on the server) of the user's last event"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "lastEventID": {
+      "type": "hasOne",
+      "model": "event",
+      "foreignKey": "id"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "ALLOW",
+      "property": "create"
+    }
+  ],
+  "methods": {}
+}
