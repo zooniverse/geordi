@@ -17,4 +17,7 @@ module.exports = function(app) {
   app.dataSources['geordi-mysql'].autoupdate('event', function(err) {
       console.log(err);
   });
+  app.dataSources['geordi-mysql'].autoupdate('userseq', function(err) {
+      console.log(err);
+  });
 };
