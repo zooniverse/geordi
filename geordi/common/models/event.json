@@ -92,6 +92,10 @@
   },
   "validations": [],
   "relations": {},
+  "indexes": {
+    "id_index": {"id": 1},
+    "userID_index": {"userID": 1}
+  },
   "acls": [
     {
       "accessType": "EXECUTE",

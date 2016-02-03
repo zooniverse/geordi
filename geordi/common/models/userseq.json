@@ -33,6 +33,9 @@
       "description": "The time (on the server) of the user's last event"
     }
   },
+  "indexes": {
+    "userID_index": {"userID": 1}
+  },
   "validations": [],
   "relations": [],
   "acls": [
