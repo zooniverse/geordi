@@ -33,5 +33,9 @@
   "userseq": {
     "dataSource": "geordi-mysql",
     "public": true
+  },
+  "meta": {
+    "dataSource": null,
+    "public": true
   }
 }

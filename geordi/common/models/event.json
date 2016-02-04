@@ -3,6 +3,14 @@
   "plural": "events",
   "base": "PersistedModel",
   "idInjection": true,
+  "indexes": {
+    "id_index": {
+      "id": 1
+    },
+    "userID_index": {
+      "userID": 1
+    }
+  },
   "properties": {
     "time": {
       "type": "date",
@@ -92,10 +100,6 @@
   },
   "validations": [],
   "relations": {},
-  "indexes": {
-    "id_index": {"id": 1},
-    "userID_index": {"userID": 1}
-  },
   "acls": [
     {
       "accessType": "EXECUTE",
@@ -111,5 +115,5 @@
       "property": "create"
     }
   ],
-  "methods": []
+  "methods": {}
 }
