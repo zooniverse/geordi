@@ -1,6 +1,6 @@
 {
   "name": "geordi",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "main": "server/server.js",
   "engineStrict": true,
   "engines": {
@@ -27,6 +27,6 @@
     "type": "",
     "url": ""
   },
-  "license":"Apache-2.0",
+  "license": "Apache-2.0",
   "description": "Geordi, the user analytics capture system for Zooniverse web applications"
 }
