@@ -17,3 +17,7 @@ bin/**
 */node_modules/**
 **/geordi/**/*.example
 **/geordi/server/datasources.json
+
+geordi/npm-ls.txt
+
+geordi/server/config.json
