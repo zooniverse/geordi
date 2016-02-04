@@ -3,14 +3,29 @@
   "plural": "userseqs",
   "base": "PersistedModel",
   "idInjection": true,
+  "indexes": {
+    "userID_index": {
+      "userID": 1
+    },
+    "userID_anonymous_index": {
+      "userID": 1,
+      "anonymous": 1
+    }
+  },
   "options": {
     "validateUpsert": true
   },
   "properties": {
+    "anonymous": {
+      "type": "boolean",
+      "required": true,
+      "description": "True if the user is anonymous - in this case the userID field will contain the user's IP as an attempt to uniquely identify them for session counting",
+      "default": false
+    },
     "userID": {
       "type": "string",
       "required": true,
-      "description": "The Zooniverse User ID of the user performing the event, or '(anonymous)'"
+      "description": "The Zooniverse User ID of the user performing the event, or if anonymous, the user's IP"
     },
     "nextSeq": {
       "type": "number",
@@ -33,11 +48,8 @@
       "description": "The time (on the server) of the user's last event"
     }
   },
-  "indexes": {
-    "userID_index": {"userID": 1}
-  },
   "validations": [],
-  "relations": [],
+  "relations": {},
   "acls": [
     {
       "accessType": "EXECUTE",
