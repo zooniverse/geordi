@@ -5,11 +5,10 @@
   "idInjection": true,
   "indexes": {
     "userID_index": {
-      "userID": 1
+      "columns": "userID"
     },
     "userID_anonymous_index": {
-      "userID": 1,
-      "anonymous": 1
+      "columns": "userID, anonymous"
     }
   },
   "options": {
