@@ -1,4 +1,5 @@
 var SESSION_EXPIRATION_TIME_MINS = 30;
+var ANONYMOUS = "(anonymous)";
 
 module.exports = function (Event) {
 
@@ -11,6 +12,9 @@ module.exports = function (Event) {
       loopback = require('loopback');
       req = loopback.getCurrentContext().active.http.req
       ctx.instance.clientIP = req.headers["x-real-ip"];
+      if (!ctx.instance.clientIP) {
+        ctx.instance.clientIP = req.ip;
+      }
       ctx.instance.serverURL = req.headers.origin;
       ctx.instance.userAgent = req.headers["user-agent"];
 
@@ -46,7 +50,14 @@ module.exports = function (Event) {
 
       // for anonymous users, we track sessions by IP address.
       var userID = ctx.instance.userID;
-      if (userID == "(anonymous)") {
+
+      // if ID is IP address, ignore and count as general anonymous user
+      if ((userID.indexOf("(")>-1)||(userID.indexOf(".")>-1)||(userID.indexOf(":")>-1))
+      {
+        userID = ANONYMOUS;
+      }
+
+      if (userID == ANONYMOUS) {
         thisInstance.anonymous = true;
         if (ctx.instance.clientIP) {
           userID = ctx.instance.clientIP;
@@ -56,7 +67,7 @@ module.exports = function (Event) {
         thisInstance.anonymous = false;
       }
 
-      if (userID != "(anonymous)") {
+      if (userID != ANONYMOUS) {
         // check counters, and find the new counters to use
         var Userseq = app.models.Userseq;
         Userseq.findOrCreate(
