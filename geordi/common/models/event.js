@@ -57,14 +57,12 @@ module.exports = function (Event) {
         userID = ANONYMOUS;
       }
 
+      var markUserSeqAsAnonymous = false;
       if (userID == ANONYMOUS) {
-        thisInstance.anonymous = true;
+        markUserSeqAsAnonymous = true;
         if (ctx.instance.clientIP) {
           userID = ctx.instance.clientIP;
         }
-      }
-      else {
-        thisInstance.anonymous = false;
       }
 
       if (userID != ANONYMOUS) {
@@ -96,6 +94,7 @@ module.exports = function (Event) {
               userseq.currentSession = thisInstance.sessionNumber;
               userseq.timeOfLastEvent = thisInstance.time;
               userseq.currentEventNumberWithinSession = thisInstance.eventNumber;
+              userseq.anonymous = markUserSeqAsAnonymous;
               userseq.save();
             }
             next();
