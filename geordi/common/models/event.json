@@ -5,10 +5,10 @@
   "idInjection": true,
   "indexes": {
     "id_index": {
-      "id": 1
+      "columns": "id"
     },
     "userID_index": {
-      "userID": 1
+      "columns": "userID"
     }
   },
   "properties": {
