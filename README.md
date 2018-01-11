@@ -74,7 +74,7 @@ Geordi stores the following information for each event `POST`ed:
 * `subjectID` - the zooniverse subject ID of the subject upon which the event was performed. (optional)
 * `relatedID` - a string containing an additional piece of information you wish to store (e.g. name of animal being identified, key of intervention being delivered, classification ID for classification being created, etc). NOTE: This may be deprecated in future. Use the more versatile `data` instead.
 * `projectToken` - the unique identifier for the zooniverse project for which we are logging the event. This should correspond to that used on [Heimdall](http://heimdall.zooniverse.org/), for example `"serengeti"` or `"galaxy_zoo"`
-* `data` - a JSON string containing any additional data you wish to store about the event. (optional)
+* `data` - a JSON string, or a simple string, containing any additional data you wish to store about the event. Note that if you switch between plain strings and JSON strings, this will pollute the data and make processing harder. It is recommended to stick with either all JSON strings or all plain strings for each event type. (optional)
 * `userSeq` - this field will be used to store a sequential integer counter, starting from 1, for this user. Every subsequent event for this user will result in an increment to this counter, regardless of any sessions and across all projects. This is calculated by the server and need not be specified. If set, the specified value will take precedence. (optional, auto-generated if omitted))
 * `sessionNumber` - this field will be used to store a sequential integer session number, starting from 1, for this user. A new session will start every time more than 30 minutes has elapsed since the last posted event (across all projects).  This is calculated by the server and need not be specified. If set, the specified value will take precedence. (optional, auto-generated if omitted))
 * `eventNumber` - this field will be used to store a sequential integer event number, starting from 1, for this session, for this user. This is calculated by the server and need not be specified. If set, the specified value will take precedence. (optional, auto-generated if omitted))
@@ -133,6 +133,7 @@ We only support running Geordi via Docker and Docker Compose. If you'd like to r
 #### Setup Docker Engine and Docker Compose
 
 * Docker Engine & Compose
+
   * [OS X](https://docs.docker.com/compose/install/)
   * [Ubuntu](https://docs.docker.com/compose/install/)
 
