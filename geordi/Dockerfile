@@ -16,7 +16,9 @@ RUN npm install
 ADD ./ /app/
 ADD ./supervisor.conf /etc/supervisor/conf.d/api.conf
 
-RUN mkdir -p /app/log/
+RUN mkdir -p /app/log/ /app/server/
+
+RUN ln -s /run/secrets/datasources.json /app/server/datasources.json
 
 EXPOSE 80
 
